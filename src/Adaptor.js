@@ -39,26 +39,28 @@ export function execute(...operations) {
  * Creates a fictional resource in a fictional destination system using a POST request
  * @public
  * @example
- * create("/endpoint", {"foo": "bar"})
+ * addContact({
+ *   name: "Mamadou",
+ *   language: "ENG",
+ *   urns: ["tel:+250788123123"]
+ * });
  * @function
- * @param {string} path - Path to resource
  * @param {object} params - data to create the new resource
  * @param {function} callback - (Optional) callback function
  * @returns {Operation}
  */
-export function create(path, params, callback) {
+export function addContact(params, callback) {
   return state => {
-    path = expandReferences(path)(state);
     params = expandReferences(params)(state);
 
-    const { baseUrl, username, password } = state.configuration;
+    const { host, apiVersion, token } = state.configuration;
 
-    const url = `${baseUrl}/${path}`;
-    const auth = { username, password };
+    const url = `${host}/api/${apiVersion || 'v2'}/contacts.json`;
 
     const config = {
       url,
       body: params,
+      headers: { Authorization: `Token ${token}` },
     };
 
     return http
@@ -115,6 +117,7 @@ export function createPatient(params, callback) {
 // What functions do you want from the common adaptor?
 export {
   alterState,
+  fn,
   dataPath,
   dataValue,
   each,
