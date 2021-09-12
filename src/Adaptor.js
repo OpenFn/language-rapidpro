@@ -11,7 +11,7 @@ exports.axios = axios;
 
 /**
  * Execute a sequence of operations.
- * Wraps `language-common/execute`, and prepends initial state for http.
+ * Wraps `language-common/execute`, and prepends initial state.
  * @example
  * execute(
  *   create('foo'),
@@ -36,7 +36,7 @@ export function execute(...operations) {
 }
 
 /**
- * Creates a fictional resource in a fictional destination system using a POST request
+ * Adds a new contact to RapidPro
  * @public
  * @example
  * addContact({
@@ -78,7 +78,7 @@ export function addContact(params, callback) {
 }
 
 /**
- * Create a fictional patient in a fictional universe with a fictional REST api
+ * Start a RapidPro flow for a number of contacts
  * @public
  * @example
  * startFlow({
@@ -127,12 +127,12 @@ export function startFlow(params, callback) {
 }
 
 /**
- * Create a fictional patient in a fictional universe with a fictional REST api
+ * Sends a message to a list of contacts and/or URNs
  * @public
  * @example
- * startFlow({
- *   flow: "f5901b62-ba76-4003-9c62-72fdacc1b7b7",
- *   restart_participants: false,
+ * sendBroadcast({
+ *   text: "Hello world",
+ *   urns: ["twitter:sirmixalot"],
  *   contacts: ["a052b00c-15b3-48e6-9771-edbaa277a353"]
  * });
  * @function
@@ -146,7 +146,7 @@ export function sendBroadcast(params, callback) {
 
     const { host, apiVersion, token } = state.configuration;
 
-    const url = `${host}/api/${apiVersion || 'v2'}/flow_starts.json`;
+    const url = `${host}/api/${apiVersion || 'v2'}/broadcasts.json`;
 
     const config = {
       url,
@@ -164,7 +164,7 @@ export function sendBroadcast(params, callback) {
         throw 'That was an error from RapidPro.';
       })
       .then(response => {
-        console.log('Flow started:', response.data);
+        console.log('Broadcast queued:', response.data);
         const nextState = {
           ...composeNextState(state, response.data),
           response,
@@ -175,15 +175,14 @@ export function sendBroadcast(params, callback) {
   };
 }
 
-// What functions do you want from the common adaptor?
 export {
   alterState,
-  fn,
   dataPath,
   dataValue,
   each,
   field,
   fields,
+  fn,
   http,
   lastReferenceValue,
   merge,

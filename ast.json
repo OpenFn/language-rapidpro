@@ -7,7 +7,7 @@
         "callback"
       ],
       "docs": {
-        "description": "Creates a fictional resource in a fictional destination system using a POST request",
+        "description": "Adds a new contact to RapidPro",
         "tags": [
           {
             "title": "public",
@@ -60,7 +60,7 @@
         "callback"
       ],
       "docs": {
-        "description": "Create a fictional patient in a fictional universe with a fictional REST api",
+        "description": "Start a RapidPro flow for a number of contacts",
         "tags": [
           {
             "title": "public",
@@ -113,7 +113,7 @@
         "callback"
       ],
       "docs": {
-        "description": "Create a fictional patient in a fictional universe with a fictional REST api",
+        "description": "Sends a message to a list of contacts and/or URNs",
         "tags": [
           {
             "title": "public",
@@ -122,7 +122,7 @@
           },
           {
             "title": "example",
-            "description": "startFlow({\n  flow: \"f5901b62-ba76-4003-9c62-72fdacc1b7b7\",\n  restart_participants: false,\n  contacts: [\"a052b00c-15b3-48e6-9771-edbaa277a353\"]\n});"
+            "description": "sendBroadcast({\n  text: \"Hello world\",\n  urns: [\"twitter:sirmixalot\"],\n  contacts: [\"a052b00c-15b3-48e6-9771-edbaa277a353\"]\n});"
           },
           {
             "title": "function",
