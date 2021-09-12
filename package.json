@@ -1,6 +1,6 @@
 {
   "name": "@openfn/language-rapidpro",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A RapidPro adaptor for OpenFn",
   "main": "lib/index.js",
   "scripts": {
