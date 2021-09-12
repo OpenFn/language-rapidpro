@@ -66,6 +66,7 @@ export function addContact(params, callback) {
     return http
       .post(config)(state)
       .then(response => {
+        console.log('Contact added with uuid:', response.data.uuid);
         const nextState = {
           ...composeNextState(state, response.data),
           response,
@@ -80,30 +81,90 @@ export function addContact(params, callback) {
  * Create a fictional patient in a fictional universe with a fictional REST api
  * @public
  * @example
- * createPatient({"foo": "bar"})
+ * startFlow({
+ *   flow: "f5901b62-ba76-4003-9c62-72fdacc1b7b7",
+ *   restart_participants: false,
+ *   contacts: ["a052b00c-15b3-48e6-9771-edbaa277a353"]
+ * });
  * @function
  * @param {object} params - data to create the new resource
  * @param {function} callback - (Optional) callback function
  * @returns {Operation}
  */
-export function createPatient(params, callback) {
+export function startFlow(params, callback) {
   return state => {
     params = expandReferences(params)(state);
 
-    const { baseUrl, username, password } = state.configuration;
+    const { host, apiVersion, token } = state.configuration;
 
-    const url = `${baseUrl}/patient`;
-    const auth = { username, password };
+    const url = `${host}/api/${apiVersion || 'v2'}/flow_starts.json`;
 
     const config = {
       url,
-      body: params,
-      auth,
+      data: params,
+      headers: {
+        Authorization: `Token ${token}`,
+        'Content-Type': 'application/json',
+      },
     };
 
     return http
       .post(config)(state)
+      .catch(error => {
+        console.log(error.response);
+        throw 'That was an error from RapidPro.';
+      })
       .then(response => {
+        console.log('Flow started:', response.data);
+        const nextState = {
+          ...composeNextState(state, response.data),
+          response,
+        };
+        if (callback) return callback(nextState);
+        return nextState;
+      });
+  };
+}
+
+/**
+ * Create a fictional patient in a fictional universe with a fictional REST api
+ * @public
+ * @example
+ * startFlow({
+ *   flow: "f5901b62-ba76-4003-9c62-72fdacc1b7b7",
+ *   restart_participants: false,
+ *   contacts: ["a052b00c-15b3-48e6-9771-edbaa277a353"]
+ * });
+ * @function
+ * @param {object} params - data to create the new resource
+ * @param {function} callback - (Optional) callback function
+ * @returns {Operation}
+ */
+export function sendBroadcast(params, callback) {
+  return state => {
+    params = expandReferences(params)(state);
+
+    const { host, apiVersion, token } = state.configuration;
+
+    const url = `${host}/api/${apiVersion || 'v2'}/flow_starts.json`;
+
+    const config = {
+      url,
+      data: params,
+      headers: {
+        Authorization: `Token ${token}`,
+        'Content-Type': 'application/json',
+      },
+    };
+
+    return http
+      .post(config)(state)
+      .catch(error => {
+        console.log(error.response);
+        throw 'That was an error from RapidPro.';
+      })
+      .then(response => {
+        console.log('Flow started:', response.data);
         const nextState = {
           ...composeNextState(state, response.data),
           response,

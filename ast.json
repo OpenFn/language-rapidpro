@@ -54,7 +54,7 @@
       "valid": true
     },
     {
-      "name": "createPatient",
+      "name": "startFlow",
       "params": [
         "params",
         "callback"
@@ -69,7 +69,60 @@
           },
           {
             "title": "example",
-            "description": "createPatient({\"foo\": \"bar\"})"
+            "description": "startFlow({\n  flow: \"f5901b62-ba76-4003-9c62-72fdacc1b7b7\",\n  restart_participants: false,\n  contacts: [\"a052b00c-15b3-48e6-9771-edbaa277a353\"]\n});"
+          },
+          {
+            "title": "function",
+            "description": null,
+            "name": null
+          },
+          {
+            "title": "param",
+            "description": "data to create the new resource",
+            "type": {
+              "type": "NameExpression",
+              "name": "object"
+            },
+            "name": "params"
+          },
+          {
+            "title": "param",
+            "description": "(Optional) callback function",
+            "type": {
+              "type": "NameExpression",
+              "name": "function"
+            },
+            "name": "callback"
+          },
+          {
+            "title": "returns",
+            "description": null,
+            "type": {
+              "type": "NameExpression",
+              "name": "Operation"
+            }
+          }
+        ]
+      },
+      "valid": true
+    },
+    {
+      "name": "sendBroadcast",
+      "params": [
+        "params",
+        "callback"
+      ],
+      "docs": {
+        "description": "Create a fictional patient in a fictional universe with a fictional REST api",
+        "tags": [
+          {
+            "title": "public",
+            "description": null,
+            "type": null
+          },
+          {
+            "title": "example",
+            "description": "startFlow({\n  flow: \"f5901b62-ba76-4003-9c62-72fdacc1b7b7\",\n  restart_participants: false,\n  contacts: [\"a052b00c-15b3-48e6-9771-edbaa277a353\"]\n});"
           },
           {
             "title": "function",
