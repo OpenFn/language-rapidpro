@@ -59,7 +59,7 @@ export function addContact(params, callback) {
 
     const config = {
       url,
-      body: params,
+      data: params,
       headers: { Authorization: `Token ${token}` },
     };
 
