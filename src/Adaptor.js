@@ -113,8 +113,12 @@ export function upsertContact(params, callback) {
       })
       .catch(err => {
         const { data } = err.response;
-
-        if (data.urns.find(x => x.includes('URN belongs to another'))) {
+        if (
+          data &&
+          data.urns &&
+          Array.isArray(data.urns) &&
+          data.urns.find(x => x.includes('URN belongs to another'))
+        ) {
           const newUrl = `${url}?urn=${config.data.urns[0]}`;
           delete config.data['urns'];
           return http
@@ -123,7 +127,14 @@ export function upsertContact(params, callback) {
               console.log('Contact updated with uuid:', resp.data.uuid);
               return resp;
             });
-        } else throw err;
+        } else {
+          console.log(JSON.stringify(data, null, 2));
+
+          delete err.response.request;
+          delete err.response.config;
+
+          throw err.response;
+        }
       })
       .then(response => {
         const nextState = {
