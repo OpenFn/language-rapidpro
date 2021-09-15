@@ -78,6 +78,65 @@ export function addContact(params, callback) {
 }
 
 /**
+ * Adds a new contact to RapidPro
+ * @public
+ * @example
+ * addContact({
+ *   name: "Mamadou",
+ *   language: "ENG",
+ *   urns: ["tel:+250788123123"]
+ * });
+ * @function
+ * @param {object} params - data to create the new resource
+ * @param {function} callback - (Optional) callback function
+ * @returns {Operation}
+ */
+export function upsertContact(params, callback) {
+  return state => {
+    params = expandReferences(params)(state);
+
+    const { host, apiVersion, token } = state.configuration;
+
+    const url = `${host}/api/${apiVersion || 'v2'}/contacts.json`;
+
+    const config = {
+      url,
+      data: params,
+      headers: { Authorization: `Token ${token}` },
+    };
+
+    return http
+      .post(config)(state)
+      .then(resp => {
+        console.log('Contact added with uuid:', resp.data.uuid);
+        return resp;
+      })
+      .catch(err => {
+        const { data } = err.response;
+
+        if (data.urns.find(x => x.includes('URN belongs to another'))) {
+          const newUrl = `${url}?urn=${config.data.urns[0]}`;
+          delete config.data['urns'];
+          return http
+            .post({ ...config, url: newUrl })(state)
+            .then(resp => {
+              console.log('Contact updated with uuid:', resp.data.uuid);
+              return resp;
+            });
+        } else throw err;
+      })
+      .then(response => {
+        const nextState = {
+          ...composeNextState(state, response.data),
+          response,
+        };
+        if (callback) return callback(nextState);
+        return nextState;
+      });
+  };
+}
+
+/**
  * Start a RapidPro flow for a number of contacts
  * @public
  * @example

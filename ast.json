@@ -54,6 +54,59 @@
       "valid": true
     },
     {
+      "name": "upsertContact",
+      "params": [
+        "params",
+        "callback"
+      ],
+      "docs": {
+        "description": "Adds a new contact to RapidPro",
+        "tags": [
+          {
+            "title": "public",
+            "description": null,
+            "type": null
+          },
+          {
+            "title": "example",
+            "description": "addContact({\n  name: \"Mamadou\",\n  language: \"ENG\",\n  urns: [\"tel:+250788123123\"]\n});"
+          },
+          {
+            "title": "function",
+            "description": null,
+            "name": null
+          },
+          {
+            "title": "param",
+            "description": "data to create the new resource",
+            "type": {
+              "type": "NameExpression",
+              "name": "object"
+            },
+            "name": "params"
+          },
+          {
+            "title": "param",
+            "description": "(Optional) callback function",
+            "type": {
+              "type": "NameExpression",
+              "name": "function"
+            },
+            "name": "callback"
+          },
+          {
+            "title": "returns",
+            "description": null,
+            "type": {
+              "type": "NameExpression",
+              "name": "Operation"
+            }
+          }
+        ]
+      },
+      "valid": true
+    },
+    {
       "name": "startFlow",
       "params": [
         "params",
