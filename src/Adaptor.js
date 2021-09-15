@@ -78,16 +78,16 @@ export function addContact(params, callback) {
 }
 
 /**
- * Adds a new contact to RapidPro
+ * Upserts a contact to RapidPro by URN
  * @public
  * @example
- * addContact({
+ * upsertContact({
  *   name: "Mamadou",
  *   language: "ENG",
  *   urns: ["tel:+250788123123"]
  * });
  * @function
- * @param {object} params - data to create the new resource
+ * @param {object} params - data to upsert a contact
  * @param {function} callback - (Optional) callback function
  * @returns {Operation}
  */

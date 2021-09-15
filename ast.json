@@ -60,7 +60,7 @@
         "callback"
       ],
       "docs": {
-        "description": "Adds a new contact to RapidPro",
+        "description": "Upserts a contact to RapidPro by URN",
         "tags": [
           {
             "title": "public",
@@ -69,7 +69,7 @@
           },
           {
             "title": "example",
-            "description": "addContact({\n  name: \"Mamadou\",\n  language: \"ENG\",\n  urns: [\"tel:+250788123123\"]\n});"
+            "description": "upsertContact({\n  name: \"Mamadou\",\n  language: \"ENG\",\n  urns: [\"tel:+250788123123\"]\n});"
           },
           {
             "title": "function",
@@ -78,7 +78,7 @@
           },
           {
             "title": "param",
-            "description": "data to create the new resource",
+            "description": "data to upsert a contact",
             "type": {
               "type": "NameExpression",
               "name": "object"
