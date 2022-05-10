@@ -31,6 +31,43 @@ sendBroadcast({
 });
 ```
 
+#### key helper functions 
+
+**sendBroadcast(...) to send broadcast message to multiple contacts**
+```js
+sendBroadcast({
+  text: "Hello world",
+  urns: ["twitter:sirmixalot"],
+  contacts: ["a052b00c-15b3-48e6-9771-edbaa277a353"]
+});
+```
+
+**startFlow(...) to trigger an automation flow in RapidPro**
+```js
+startFlow({
+  flow: "f5901b62-ba76-4003-9c62-72fdacc1b7b7",
+  restart_participants: false,
+  contacts: ["a052b00c-15b3-48e6-9771-edbaa277a353"]
+});
+```
+**upsertContact(...) to update/insert a Contact (and check if exists using external identifiers)**
+```js
+upsertContact({
+  name: "Mamadou",
+  language: "ENG",
+  urns: ["tel:+250788123123"]
+});
+```
+
+**addContact(...) to insert a Contact**
+```js
+addContact({
+  name: "Mamadou",
+  language: "ENG",
+  urns: ["tel:+250788123123"]
+});
+```
+
 ## Development
 
 Clone the repo, run `npm install`.
