@@ -5,7 +5,7 @@ An OpenFn **_adaptor_** for building integration jobs for use with the
 
 ## Documentation
 
-- View the documentation at https://openfn.github.io/language-rapidpro/
+- View the documentation at https://openfn.github.io/language-rapidpro/ [In Progress]
 - To update the documentation site, run:
   `./node_modules/.bin/jsdoc --readme ./README.md ./lib -d docs`
 
