@@ -9,7 +9,7 @@ An OpenFn **_adaptor_** for building integration jobs for use with the
 - To update the documentation site, run:
   `./node_modules/.bin/jsdoc --readme ./README.md ./lib -d docs`
 
-## post
+## Usage
 
 #### sample configuration
 
@@ -20,7 +20,7 @@ An OpenFn **_adaptor_** for building integration jobs for use with the
 }
 ```
 
-#### sample expression using operation
+#### sample job expression using operation
 
 ```js
 sendBroadcast({
