@@ -31,7 +31,7 @@ sendBroadcast({
 });
 ```
 
-#### key helper functions 
+### Key helper functions 
 
 **sendBroadcast(...) to send broadcast message to multiple contacts**
 ```js
