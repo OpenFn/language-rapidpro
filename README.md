@@ -20,6 +20,8 @@ An OpenFn **_adaptor_** for building integration jobs for use with the
 }
 ```
 
+The configuration above uses the v2 API version by default. If you want to specify a sepecific API version add the `apiVersion` key to configuration json and give the appropriate API version of Rapidpro to use.
+
 #### sample job expression using operation
 
 ```js
