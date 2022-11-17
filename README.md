@@ -1,4 +1,11 @@
-# language-rapidpro [<img src="https://avatars2.githubusercontent.com/u/9555108?s=200&v=4)" alt="alt text" height="20">](https://www.openfn.org) [![Build Status](https://travis-ci.org/OpenFn/language-rapidpro.svg?branch=master)](https://travis-ci.org/OpenFn/language-rapidpro)
+# _⚠️ MOVED TO [OpenFn/adaptors](https://github.com/OpenFn/adaptors)! ⚠️_
+
+**N.B.: New versions are available at:
+https://github.com/OpenFn/adaptors/tree/main/packages/rapidpro**
+
+
+
+# Language-rapidpro (Archived) [<img src="https://avatars2.githubusercontent.com/u/9555108?s=200&v=4)" alt="alt text" height="20">](https://www.openfn.org) [![Build Status](https://travis-ci.org/OpenFn/language-rapidpro.svg?branch=master)](https://travis-ci.org/OpenFn/language-rapidpro)
 
 An OpenFn **_adaptor_** for building integration jobs for use with the
 [RapidPro API](https://rapidpro.io/api/v2/).
